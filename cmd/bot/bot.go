@@ -100,6 +100,33 @@ var AIRHORN *SoundCollection = &SoundCollection{
 	},
 }
 
+var OGOMK *SoundCollection = &SoundCollection{
+	Prefix: "ogomk",
+	Commands: []string{
+		"!ogomk",
+	},
+	Sounds: []*Sound{
+		createSound("dolboeb", 1000, 250),
+		createSound("klientprav", 800, 250),
+		createSound("nalice", 800, 250),
+		createSound("tiohuel", 800, 250),
+	},
+}
+
+var SHUBA *SoundCollection = &SoundCollection{
+	Prefix: "shuba",
+	Commands: []string{
+		"!shuba",
+	},
+	Sounds: []*Sound{
+		createSound("fulldamag", 1000, 250),
+		createSound("gera", 800, 250),
+		createSound("kakogo", 800, 250),
+		createSound("neori", 800, 250),
+		createSound("suki", 800, 250),
+	},
+}
+
 var KHALED *SoundCollection = &SoundCollection{
 	Prefix:    "another",
 	ChainWith: AIRHORN,
@@ -199,6 +226,8 @@ var COLLECTIONS []*SoundCollection = []*SoundCollection{
 	COW,
 	BIRTHDAY,
 	WOW,
+	SHUBA
+	OGOMK
 }
 
 // Create a Sound struct
@@ -461,7 +490,7 @@ func onReady(s *discordgo.Session, event *discordgo.Ready) {
 }
 
 func onGuildCreate(s *discordgo.Session, event *discordgo.GuildCreate) {
-	if event.Guild.Unavailable != nil {
+	if event.Guild.Unavailable != false {
 		return
 	}
 
